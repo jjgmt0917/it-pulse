@@ -1,6 +1,6 @@
 {
   "name": "it-pulse",
-  "version": "0.1.0",
-  "description": "Hacker News 인기글에서 AI·빅테크·보안·개발기술 이슈를 3~5개로 브리핑하고, 후속 질문에 친구처럼 답하는 플러그인",
+  "version": "0.2.0",
+  "description": "국내외 IT 뉴스 RSS에서 AI·빅테크·보안·개발기술 이슈를 3~5개로 브리핑하고, 후속 질문과 Hacker News 반응에 친구처럼 답하는 플러그인",
   "author": { "name": "jeong" }
 }

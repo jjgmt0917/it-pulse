@@ -13,12 +13,24 @@ export const config = {
   apiBase: env.HN_API_BASE ?? 'https://hn.algolia.com/api/v1',
   hnItemUrl: 'https://news.ycombinator.com/item?id=',
   requestTimeoutMs: num(env.IT_PULSE_TIMEOUT_MS, 10000),
+  userAgent: env.IT_PULSE_USER_AGENT ?? 'Mozilla/5.0 (compatible; it-pulse)',
 
   // 수집·추림
   fetchCount: num(env.IT_PULSE_FETCH_COUNT, 30),
   candidates: num(env.IT_PULSE_CANDIDATES, 15),
   titleSimilarity: num(env.IT_PULSE_TITLE_SIMILARITY, 0.6),
   minTokenLength: 3,
+
+  // 뉴스 RSS (피드 목록은 feeds.json)
+  feedsFile: env.IT_PULSE_FEEDS_FILE ?? path.join(import.meta.dirname, '..', 'feeds.json'),
+  newsMaxAgeDays: num(env.IT_PULSE_NEWS_MAX_AGE_DAYS, 3),
+  newsCandidates: num(env.IT_PULSE_NEWS_CANDIDATES, 25),
+  newsPerFeed: num(env.IT_PULSE_NEWS_PER_FEED, 15),
+  newsSummaryMaxChars: num(env.IT_PULSE_NEWS_SUMMARY_MAX_CHARS, 200),
+  newsHistoryFile: 'news-history.json',
+
+  // HN 반응 검색
+  hnSearchHits: num(env.IT_PULSE_HN_SEARCH_HITS, 3),
 
   // 이전 브리핑 이력
   historyDays: num(env.IT_PULSE_HISTORY_DAYS, 14),

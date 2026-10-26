@@ -1,0 +1,9 @@
+[
+  { "name": "ITWorld Korea", "url": "https://www.itworld.co.kr/feed", "lang": "ko", "region": "kr" },
+  { "name": "지디넷코리아", "url": "https://feeds.feedburner.com/zdkorea", "lang": "ko", "region": "kr" },
+  { "name": "전자신문", "url": "https://rss.etnews.com/Section901.xml", "lang": "ko", "region": "kr" },
+  { "name": "TechCrunch", "url": "https://techcrunch.com/feed/", "lang": "en", "region": "global" },
+  { "name": "The Verge", "url": "https://www.theverge.com/rss/index.xml", "lang": "en", "region": "global" },
+  { "name": "Ars Technica", "url": "https://feeds.arstechnica.com/arstechnica/index", "lang": "en", "region": "global" },
+  { "name": "The Hacker News", "url": "https://feeds.feedburner.com/TheHackersNews", "lang": "en", "region": "global" }
+]

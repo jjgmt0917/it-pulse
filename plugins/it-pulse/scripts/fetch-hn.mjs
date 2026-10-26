@@ -1,6 +1,7 @@
 // HN 수집 스크립트. 사용법:
 //   node fetch-hn.mjs list [--data-dir <경로>] [--include-seen]
 //   node fetch-hn.mjs item <id>
+//   node fetch-hn.mjs search <url|제목>
 //   node fetch-hn.mjs mark <id,id,...> [--data-dir <경로>]
 import fs from 'node:fs';
 import path from 'node:path';
@@ -138,6 +139,16 @@ const runItem = async (id) => {
   );
 };
 
+// 뉴스 기사의 HN 논의 찾기: URL이면 url 속성으로, 아니면 제목으로 검색
+const runSearch = async (query) => {
+  if (!query) fail('search 모드에는 기사 URL 또는 제목이 필요해요.');
+  const isUrl = /^https?:\/\//i.test(query);
+  const params = new URLSearchParams({ query, tags: 'story', hitsPerPage: String(config.hnSearchHits) });
+  if (isUrl) params.set('restrictSearchableAttributes', 'url');
+  const data = await getJson(`${config.apiBase}/search?${params}`);
+  process.stdout.write(JSON.stringify({ query, stories: data.hits.filter((h) => h.title).map(toStory) }, null, 2));
+};
+
 const runMark = (ids, flags) => {
   const list = (ids ?? '').split(',').filter((v) => /^\d+$/.test(v));
   if (!list.length) fail('mark 모드에는 쉼표로 구분한 숫자 id가 필요해요.');
@@ -154,5 +165,6 @@ const [mode, arg] = positional;
 
 if (mode === 'list') await runList(flags);
 else if (mode === 'item') await runItem(arg);
+else if (mode === 'search') await runSearch(arg);
 else if (mode === 'mark') runMark(arg, flags);
-else fail('사용법: fetch-hn.mjs list | item <id> | mark <id,id,...>');
+else fail('사용법: fetch-hn.mjs list | item <id> | search <url|제목> | mark <id,id,...>');
