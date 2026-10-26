@@ -1,0 +1,12 @@
+{
+  "name": "it-pulse-market",
+  "owner": { "name": "jeong" },
+  "description": "it-pulse 플러그인 로컬 마켓플레이스",
+  "plugins": [
+    {
+      "name": "it-pulse",
+      "source": "./plugins/it-pulse",
+      "description": "HN 기반 IT 이슈 브리핑 + 후속 대화 + 대화 정리 저장"
+    }
+  ]
+}
